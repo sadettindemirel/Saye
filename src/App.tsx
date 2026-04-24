@@ -19,6 +19,7 @@ import {
 import GuvenliKalkan from './components/GuvenliKalkan';
 import SayeKesif from './components/SayeKesif';
 import DayanismaAgi from './components/DayanismaAgi';
+import { AboutModal } from './components/AboutModal';
 import { LoginModal } from './components/LoginModal';
 import { StorytellingModal } from './components/StorytellingModal';
 import { SayeOlInfoModal } from './components/SayeOlInfoModal';
@@ -140,6 +141,7 @@ export default function App() {
   const [isSayeOlInfoModalOpen, setIsSayeOlInfoModalOpen] = useState(false);
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [activeView, setActiveView] = useState<'home' | 'safety' | 'explore' | 'dayanisma'>('home');
   const t = translations[lang];
 
@@ -212,7 +214,7 @@ export default function App() {
               EN
             </button>
           </div>
-          <span className={`hidden md:block text-sm font-medium ${isDarkMode ? 'text-slate-300 hover:text-teal-400' : 'text-slate-900 hover:text-teal-600'} transition-colors cursor-pointer`}>
+          <span onClick={() => setIsAboutModalOpen(true)} className={`hidden md:block text-sm font-medium ${isDarkMode ? 'text-slate-300 hover:text-teal-400' : 'text-slate-900 hover:text-teal-600'} transition-colors cursor-pointer`}>
             {lang === 'tr' ? 'Hakkımızda' : 'About'}
           </span>
           <button onClick={() => setIsLoginModalOpen(true)} className={`px-5 py-2.5 ${isDarkMode ? 'bg-teal-600 text-white' : 'bg-slate-900 text-white'} rounded-full text-sm font-medium shadow-lg hover:shadow-xl transition-all`}>
@@ -377,6 +379,7 @@ export default function App() {
 
       {/* Saye Ol Form Modal */}
       <AnimatePresence>
+        {isAboutModalOpen && <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} lang={lang} />}
         {isLoginModalOpen && <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} lang={lang} />}
         {isStoryModalOpen && <StorytellingModal isOpen={isStoryModalOpen} onClose={() => setIsStoryModalOpen(false)} lang={lang} />}
         {isSayeOlInfoModalOpen && <SayeOlInfoModal isOpen={isSayeOlInfoModalOpen} onClose={() => setIsSayeOlInfoModalOpen(false)} onConfirm={() => { setIsSayeOlInfoModalOpen(false); setShowSayeOlForm(true); }} isDarkMode={isDarkMode} lang={lang} />}
