@@ -14,7 +14,8 @@ import {
   Baby,
   Handshake,
   Sun,
-  Moon
+  Moon,
+  LogOut
 } from 'lucide-react';
 import GuvenliKalkan from './components/GuvenliKalkan';
 import SayeKesif from './components/SayeKesif';
@@ -198,6 +199,14 @@ export default function App() {
         </div>
         <div className="flex items-center gap-4 md:gap-6">
           <button 
+                onClick={() => window.location.href = 'https://www.accuweather.com'}
+                className="px-4 py-2 bg-red-600 text-white rounded-full text-sm font-bold shadow-lg shadow-red-500/20 hover:bg-red-700 transition-all flex items-center gap-2"
+                title={lang === 'tr' ? 'Sizi anında güvenli bir siteye yönlendirir' : 'Redirects you to a safe site instantly'}
+          >
+              <LogOut className="w-4 h-4" />
+              <span>{lang === 'tr' ? 'Hızlı Çıkış' : 'Quick Exit'}</span>
+          </button>
+          <button 
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={`p-2 rounded-full ${isDarkMode ? 'bg-slate-800 text-yellow-400' : 'bg-slate-200 text-slate-600'}`}
           >
@@ -380,6 +389,15 @@ export default function App() {
         </h2>
       </div>
       <FeatureSlider id="feature-slider" isDarkMode={isDarkMode} />
+
+      {/* Mobile Floating Exit Button */}
+      <button 
+          onClick={() => window.location.href = 'https://www.accuweather.com'}
+          className="md:hidden fixed bottom-6 right-6 z-[100] px-4 py-3 bg-red-600 text-white rounded-full text-sm font-bold shadow-2xl shadow-red-500/50 hover:bg-red-700 transition-all flex items-center gap-2"
+          title={lang === 'tr' ? 'Sizi anında güvenli bir siteye yönlendirir' : 'Redirects you to a safe site instantly'}
+      >
+          <LogOut className="w-4 h-4" />
+      </button>
 
       {/* Saye Ol Form Modal */}
       <AnimatePresence>

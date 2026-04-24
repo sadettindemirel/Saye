@@ -103,7 +103,7 @@ Hadi destek olalım!`;
                     </div>
                     <p className="text-sm text-slate-200 mb-4">{alert.desc}</p>
                     <div className="flex gap-2">
-                        <button className="flex-1 bg-emerald-600 hover:bg-emerald-500 py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
+                        <button className="flex-1 bg-emerald-600 hover:bg-emerald-400 text-white py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-colors">
                             <Heart className="w-4 h-4" /> Destek Ol
                         </button>
                         <button onClick={() => handleShare(alert)} className="bg-slate-800 hover:bg-slate-700 p-2 rounded-xl text-slate-300">
@@ -119,7 +119,7 @@ Hadi destek olalım!`;
        {/* Footer */}
        <div className="p-6 bg-slate-900 border-t border-white/10 flex items-center justify-between">
           <p className="text-[10px] text-slate-500 max-w-sm">Topluluk paylaşımlarında güven ve beyan esastır. Lütfen acil durumlarda resmi kanalları (183/KADES) da kullanmayı unutmayın.</p>
-          <button onClick={() => setIsInfoModalOpen(true)} className="flex items-center gap-2 bg-teal-500 hover:bg-teal-400 px-6 py-3 rounded-2xl font-bold text-sm text-white shadow-lg shadow-teal-500/20">
+          <button onClick={() => setIsInfoModalOpen(true)} className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-lg shadow-teal-500/20 transition-all duration-300">
              <Plus className="w-4 h-4" /> Saye Ol / İlan Oluştur
           </button>
        </div>

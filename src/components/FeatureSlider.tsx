@@ -53,7 +53,7 @@ export function FeatureSlider({ isDarkMode, id }: { isDarkMode: boolean, id?: st
                         animate={{ opacity: 1, x: 0, scale: 1 }}
                         exit={{ opacity: 0, x: -50, scale: 0.95 }}
                         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        className={`w-80 p-7 rounded-3xl border border-white/10 border-t-4 ${feat.borderColor} backdrop-blur-2xl ${isDarkMode ? 'bg-slate-900/40' : 'bg-white/30'} shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] group ${feat.glowClass} transition-all duration-500 cursor-pointer`}
+                        className={`w-80 p-7 rounded-3xl border border-white/10 border-t-4 ${feat.borderColor} backdrop-blur-2xl ${isDarkMode ? 'bg-slate-900/60' : 'bg-white/50'} shadow-lg hover:shadow-2xl group hover:-translate-y-1 transition-all duration-500 cursor-pointer`}
                     >
                         <feat.icon className={`w-12 h-12 ${feat.iconColor} mb-6 transition-transform duration-500 group-hover:scale-110`} />
                         <h3 className="text-2xl font-extrabold mb-4">{feat.title}</h3>
