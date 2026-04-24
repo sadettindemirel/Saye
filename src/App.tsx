@@ -24,6 +24,8 @@ import { LoginModal } from './components/LoginModal';
 import { StorytellingModal } from './components/StorytellingModal';
 import { SayeOlInfoModal } from './components/SayeOlInfoModal';
 import { SayeOlForm } from './components/SayeOlForm';
+import { FeatureSlider } from './components/FeatureSlider';
+
 
 const translations = {
   tr: {
@@ -169,7 +171,7 @@ export default function App() {
     return <SayeKesif onBack={() => { window.location.hash = ''; setActiveView('home'); }} />;
   }
   if (activeView === 'dayanisma') {
-    return <DayanismaAgi onBack={() => { window.location.hash = ''; setActiveView('home'); }} />;
+    return <DayanismaAgi onBack={() => { window.location.hash = ''; setActiveView('home'); }} lang={lang} isDarkMode={isDarkMode} />;
   }
 
   return (
@@ -182,6 +184,7 @@ export default function App() {
 
       {/* Navbar */}
       <motion.nav 
+        id="nav-bar"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -236,9 +239,11 @@ export default function App() {
           <h1 className={`text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
             {lang === 'tr' ? 'Saye: ' : 'Saye: '}<span className="text-teal-500">{t.title}</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-500 font-light leading-relaxed max-w-2xl">
-            {t.subtitle}
-          </p>
+          <div className="flex flex-col gap-2">
+            <p className="text-lg md:text-xl text-slate-500 font-light leading-relaxed max-w-2xl">
+              {t.subtitle}
+            </p>
+          </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <button 
               onClick={() => {
@@ -368,14 +373,13 @@ export default function App() {
         </motion.div>
       </main>
 
-      {/* Footer Decorative */}
-      <div className="hidden md:flex fixed bottom-6 left-12 items-center gap-4 text-[11px] text-slate-400 font-medium z-10">
-        <span>© 2024 Saye Istanbul</span>
-        <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
-        <span>Prototip Aşaması</span>
-        <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
-        <span>Veri Gizliliği Sözleşmesi</span>
+      <div className="px-6 md:px-12 mb-8">
+        <h2 className={`text-3xl md:text-4xl font-extrabold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'} mb-4 flex items-center gap-3`}>
+          <span className="w-2 h-8 bg-teal-500 rounded-full inline-block"></span>
+          {lang === 'tr' ? 'Sizlere Neler Sunuyoruz?' : 'What We Offer'}
+        </h2>
       </div>
+      <FeatureSlider id="feature-slider" isDarkMode={isDarkMode} />
 
       {/* Saye Ol Form Modal */}
       <AnimatePresence>

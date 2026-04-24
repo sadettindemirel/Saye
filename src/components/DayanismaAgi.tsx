@@ -18,7 +18,7 @@ const INITIAL_ALERTS: Alert[] = [
   { id: 3, category: "#BilgiPaylaşımı", location: "Beşiktaş", time: "1 saat önce", desc: "Kurs kayıtları hakkında bilgi verebilecek biri.", isSOS: false },
   { id: 4, category: "#AcilSağlık", location: "Şişli", time: "2 saat önce", desc: "Yabancı bir arkadaşım İstanbul'a yeni geldi, Türkçe bilmiyor ve küçük oğlu hasta. Doktora gitmemiz gerekiyor, yardımcı olabilecek biri var mı?", isSOS: true },
 ];
-export default function DayanismaAgi({ onBack }: { onBack: () => void }) {
+export default function DayanismaAgi({ onBack, lang, isDarkMode }: { onBack: () => void, lang: 'tr' | 'en', isDarkMode: boolean }) {
   const [selectedAlertId, setSelectedAlertId] = useState<number | null>(null);
   const [alerts, setAlerts] = useState<Alert[]>(INITIAL_ALERTS);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -125,7 +125,7 @@ Hadi destek olalım!`;
        </div>
         
         <AnimatePresence>
-          <SayeOlInfoModal isOpen={isInfoModalOpen} onClose={() => setIsInfoModalOpen(false)} onConfirm={() => { setIsInfoModalOpen(false); setIsFormOpen(true); }} />
+          <SayeOlInfoModal isOpen={isInfoModalOpen} onClose={() => setIsInfoModalOpen(false)} onConfirm={() => { setIsInfoModalOpen(false); setIsFormOpen(true); }} isDarkMode={isDarkMode} lang={lang} />
           {isFormOpen && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsFormOpen(false)} />
