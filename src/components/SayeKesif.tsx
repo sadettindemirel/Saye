@@ -530,11 +530,7 @@ export default function SayeKesif({ onBack }: Props) {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <button 
-                onClick={() => {
-                  console.log("Saye Ol button clicked");
-                  alert("Tıklandı!");
-                  setShowSayeOlForm(true);
-                }}
+                onClick={() => setShowSayeOlForm(true)}
                 className="p-2.5 bg-emerald-600 hover:bg-emerald-500 rounded-full transition-colors text-white shadow-lg"
                 title="Saye Ol - Gönüllü Ol"
              >

@@ -57,7 +57,7 @@ Hadi destek olalım!`;
         console.error('Error sharing:', err);
       }
     } else {
-      alert('Tarayıcınız paylaşımı desteklemiyor. Metin panoya kopyalandı.');
+      window.alert('Tarayıcınız paylaşımı desteklemiyor. Metin panoya kopyalandı.');
       navigator.clipboard.writeText(text);
     }
   };
